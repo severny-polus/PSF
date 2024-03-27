@@ -202,10 +202,12 @@ ProductSum* subtract(ProductSum* a, ProductSum* b) {
     return c;
 }
 
+// Проверка двух сумм на равенство
 bool equal_sums(ProductSum* a, ProductSum* b) {
     return subtract(a, b) == NULL;
 }
 
+// Произведение сумм
 ProductSum* multiply_sums(ProductSum* a, ProductSum* b) {
     ProductSum* c       = NULL;
     ProductSum* b_first = b;
