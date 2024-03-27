@@ -36,7 +36,7 @@ VariableProduct* copy_product(VariableProduct* p) {
 }
 
 // Напечатать произведение переменных
-// (*) не обрабатывает NULL
+// * не обрабатывает NULL
 void print_product(VariableProduct* product) {
     printf("%c", product->variable);
     if (product->tail != NULL) {
@@ -60,7 +60,7 @@ bool equal_products(VariableProduct* a, VariableProduct* b) {
 }
 
 // Добавить к произведению ещё одну переменную.
-// (*) параметр p может быть изменён
+// * параметр p может быть изменён
 VariableProduct* multiply_assign(VariableProduct* p, char variable) {
     if (p == NULL || variable < p->variable) {
         return new_product(variable, p);
@@ -154,7 +154,7 @@ void print_sum(ProductSum* sum) {
 }
 
 // Добавить к сумме s ещё одно слагаемое. При возможности упростить.
-// (*) может изменить данные s или освободить s и product
+// * может изменить данные s или освободить s и product
 ProductSum* add_assign(ProductSum* s, int multiplier, VariableProduct* product) {
     if (s == NULL) {
         return new_sum(multiplier, product, NULL);
