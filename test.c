@@ -1,6 +1,7 @@
 #include "psf.c"
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 void assert_equal_sums(ProductSum* expected, ProductSum* got) {
     if (equal_sums(expected, got)) {
@@ -70,12 +71,12 @@ void run_test(FILE* in, FILE* out) {
     free_sum(sum2);
 }
 
-const int n_tests = 6;
-
 // Запускает все тесты
-void run_tests() {
+void run_tests(int n_tests) {
+    time_t start, end;
+    time(&start);
     for (int i = 0; i < n_tests; ++i) {
-        char path[20];
+        char path[30];
         sprintf(path, "tests/%d.test", i + 1);
         FILE* in = fopen(path, "r");
         sprintf(path, "tests/%d.ans", i + 1);
@@ -87,9 +88,13 @@ void run_tests() {
         fclose(in);
         fclose(out);
     }
+    time(&end);
+    double diff = difftime(end, start);
+    printf("time elapsed: %fs\n", diff);
 }
 
 int main() {
-    run_tests();
+    int n_tests = 8;
+    run_tests(n_tests);
     return 0;
 }
