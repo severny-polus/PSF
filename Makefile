@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -pedantic
+CFLAGS = -Wall -pedantic -fsanitize=address
 
 test:
 	$(CC) $(CFLAGS) test.c && ./a.out

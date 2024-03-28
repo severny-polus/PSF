@@ -165,6 +165,7 @@ ProductSum* add_assign(ProductSum* s, int multiplier, VariableProduct* product) 
         if (s->multiplier == 0) {
             ProductSum* next = s->tail;
             s->tail          = NULL;
+            free_product(s->product);
             free(s);
             return next;
         }
@@ -204,7 +205,10 @@ ProductSum* subtract(ProductSum* a, ProductSum* b) {
 
 // Проверка двух сумм на равенство
 bool equal_sums(ProductSum* a, ProductSum* b) {
-    return subtract(a, b) == NULL;
+    ProductSum* c = subtract(a, b);
+    bool equal = c == NULL;
+    free_sum(c);
+    return equal;
 }
 
 // Произведение сумм
