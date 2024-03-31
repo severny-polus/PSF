@@ -94,7 +94,7 @@ void run_tests(int n_tests) {
 }
 
 int main() {
-    int n_tests = 8;
+    int n_tests = 9;
     run_tests(n_tests);
     return 0;
 }

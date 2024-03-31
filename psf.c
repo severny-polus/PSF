@@ -117,15 +117,15 @@ void print_sum(ProductSum* sum) {
         return;
     }
 
-    if (sum->multiplier == -1) {
-        printf("-");
-    }
     if (abs(sum->multiplier) != 1 || sum->product == NULL) {
         printf("%d", sum->multiplier);
     }
     if (sum->product != NULL) {
         if (abs(sum->multiplier) != 1) {
             printf("*");
+        }
+        if (sum->multiplier == -1) {
+            printf("-");
         }
         print_product(sum->product);
     }
@@ -205,8 +205,8 @@ ProductSum* subtract(ProductSum* a, ProductSum* b) {
 
 // Проверка двух сумм на равенство
 bool equal_sums(ProductSum* a, ProductSum* b) {
-    ProductSum* c = subtract(a, b);
-    bool equal = c == NULL;
+    ProductSum* c     = subtract(a, b);
+    bool        equal = c == NULL;
     free_sum(c);
     return equal;
 }
